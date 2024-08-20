@@ -7,11 +7,12 @@ import { CarsComponent } from './components/cars/cars.component';
 import { Car } from './types/carModel.interface';
 import { CreateCarComponent } from './components/create-car/create-car.component';
 import { FormsModule } from '@angular/forms';
+import { HomeComponent } from './components/home/home.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, HeaderComponent, NavigationBarComponent, DealershipInfoComponent, CarsComponent, CreateCarComponent, FormsModule],
+  imports: [RouterOutlet, HomeComponent, HeaderComponent, DealershipInfoComponent, CarsComponent, CreateCarComponent, FormsModule, NavigationBarComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

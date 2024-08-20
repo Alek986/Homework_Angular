@@ -1,5 +1,18 @@
-<div *ngFor = "let car of cars">
+<section>
+    @for (car of cars; track car.id){
+    <div>
+        <h3>{{ car.brand }} / {{ car.model }}</h3>
+        <p>{{ car.description }}</p>
+        <p>Price: {{ car.price }}</p>
+    </div>}
+    </section>
+
+<section>
+@for (car of carsObservable(); track car.id){
+<div>
     <h3>{{ car.brand }} / {{ car.model }}</h3>
     <p>{{ car.description }}</p>
     <p>Price: {{ car.price }}</p>
-</div>
+    <button (click)="removeCar(car.id)">Remove Car</button>
+</div>}
+</section>
