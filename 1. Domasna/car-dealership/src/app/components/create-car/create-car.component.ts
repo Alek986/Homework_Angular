@@ -2,6 +2,7 @@ import { Component, Output, EventEmitter } from '@angular/core';
 import { Car } from '../../types/carModel.interface';
 import { v4 as uuid } from "uuid";
 import { FormsModule } from '@angular/forms';
+import { CarsDealershipServiceService } from '../../services/cars-dealership-service.service';
 
 @Component({
   selector: 'app-create-car',
@@ -19,6 +20,8 @@ export class CreateCarComponent {
 
   @Output() carCreated = new EventEmitter<Car>()
 
+  constructor(private readonly carService: CarsDealershipServiceService){}
+
   createCar() {
     const newCar: Car = {
       id: uuid(),
@@ -28,7 +31,8 @@ export class CreateCarComponent {
       model: this.model
     };
 
-    this.carCreated.emit(newCar);
+    this.carService.addCar(newCar);
+    //this.carCreated.emit(newCar);
 
     this.description = '';
     this.price = 0;
