@@ -1,23 +1,26 @@
-<mat-grid-list cols="3" rowHeight="1-1">
- <!-- @if(!cars$.length){
+<mat-grid-list class="mat-grid-list-class" cols="3" rowHeight="2:3">
+
+    <!-- @if(!(cars$ | async).length){
         <p>No cars found</p>
     } -->
-    @for(car of cars$ | async; track car.id){
-        <mat-grid-tile>
-            <mat-card>
-                <mat-card-header>
-                    <mat-card-title>{{ car.brand }} {{ car.model }}</mat-card-title>
-                    <mat-card-subtitle>{{ car.year }} | {{ car.fuelType }} | {{ car.transmission }}</mat-card-subtitle>
-                </mat-card-header>
-                <img mat-card-image [src] = 'car.images[0]' alt="{{car.model}}">
-                <mat-card-content>
-                    <p>{{ car.description }}</p>
-                    <p>Price: {{ car.price | currency }}</p>
-                    <p>Location: {{ car.location.city }}, {{ car.location.country }}</p>
-                </mat-card-content>
-            </mat-card>
-        </mat-grid-tile>
-    }
-</mat-grid-list>
 
-   
+    @for(car of cars$ | async; track car.id){
+    <mat-grid-tile>
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title>{{ car.brand }} {{ car.model }}</mat-card-title>
+                <mat-card-subtitle>{{ car.year }} | {{ car.fuelType }} | {{ car.transmission }}</mat-card-subtitle>
+            </mat-card-header>
+            <div>
+                <img mat-card-image [src]='car.images[0]' alt="{{car.model}}">
+            </div>
+            <mat-card-content>
+                <p>{{ car.description }}</p>
+                <p>Price: {{ car.price | currency }}</p>
+                <p>Location: {{ car.location.city }}, {{ car.location.country }}</p>
+            </mat-card-content>
+        </mat-card>
+    </mat-grid-tile>
+    }
+    
+</mat-grid-list>
